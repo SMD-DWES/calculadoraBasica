@@ -42,25 +42,22 @@
         function inicio($num1,$num2,$tipo) {
 
             //Def obj
-            $calculadora = new Calculadora();
+            $calculadora = new Calculadora($num1,$num2);
             $resultado = 0;
 
             //Si has elegido la opción suma o resta...
             if($_POST["valores"] == "sumar") {
-                $resultado = $calculadora->suma($num1,$num2);
+                $resultado = $calculadora->suma();
             } else if($_POST["valores"] == "restar"){
-                $resultado = $calculadora->resta($num1,$num2);
+                $resultado = $calculadora->resta();
             }
             else if($_POST["valores"] == "multiplicar"){
-                $resultado = $calculadora->multiplica($num1,$num2);
+                $resultado = $calculadora->multiplica();
             }
             else if($_POST["valores"] == "dividir"){
-                $resultado = $calculadora->divide($num1,$num2);
+                $resultado = $calculadora->divide();
             }
-
             echo "<br><br>Resultado: ". $resultado;
-
-            
         }
     }
 
