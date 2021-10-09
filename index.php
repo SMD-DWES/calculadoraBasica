@@ -38,7 +38,7 @@
     if(isset($_POST["enviar"])) {
 
         //Creo objeto y le paso de parametros los dos input del usuario.
-        $calculadora = new Calculadora($num1,$num2);
+        $calculadora = new Calculadora($_POST["valor1"],$_POST["valor2"]);
         $resultado = 0;
 
         //Si has elegido la opción suma o resta...
