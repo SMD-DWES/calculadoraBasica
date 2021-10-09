@@ -29,38 +29,31 @@
 <?php
     //Autor: Sergio Matamoros Delgado
     //Fecha: 8-10-21
-    //Licencia: 
+    //Licencia: AGPL V3
 
     //Importamos librerias
     include("calculadora.php");
 
-    class Principal {
-        function __construct($num1,$num2,$tipo)
-        {
-            $this->inicio($num1,$num2,$tipo);
-        }
-        function inicio($num1,$num2,$tipo) {
 
-            //Def obj
-            $calculadora = new Calculadora($num1,$num2);
-            $resultado = 0;
+    if(isset($_POST["enviar"])) {
 
-            //Si has elegido la opción suma o resta...
-            if($_POST["valores"] == "sumar") {
-                $resultado = $calculadora->suma();
-            } else if($_POST["valores"] == "restar"){
-                $resultado = $calculadora->resta();
-            }
-            else if($_POST["valores"] == "multiplicar"){
-                $resultado = $calculadora->multiplica();
-            }
-            else if($_POST["valores"] == "dividir"){
-                $resultado = $calculadora->divide();
-            }
-            echo "<br><br>Resultado: ". $resultado;
+        //Creo objeto y le paso de parametros los dos input del usuario.
+        $calculadora = new Calculadora($num1,$num2);
+        $resultado = 0;
+
+        //Si has elegido la opción suma o resta...
+        //Si la opción elegida es algunas de las del select entra en la clase calculadora.
+        if($_POST["valores"] == "sumar") {
+            $resultado = $calculadora->suma();
+        } else if($_POST["valores"] == "restar"){
+            $resultado = $calculadora->resta();
         }
+        else if($_POST["valores"] == "multiplicar"){
+            $resultado = $calculadora->multiplica();
+        }
+        else if($_POST["valores"] == "dividir"){
+            $resultado = $calculadora->divide();
+        }
+        echo "<br><br>Resultado: ". $resultado;
     }
-
-    if(isset($_POST["enviar"]))
-        new Principal($_POST["valor1"],$_POST["valor2"],$_POST["valores"]);
 ?>
